@@ -947,7 +947,8 @@ class UserAccount extends VerySimpleModel {
     }
 
     function isPasswdResetEnabled() {
-        return !$this->hasStatus(UserAccountStatus::FORBID_PASSWD_RESET);
+        return !$this->hasStatus(UserAccountStatus::FORBID_PASSWD_RESET)
+            && $this->getInfo()['backend'] == 'client';
     }
 
     function getInfo() {
